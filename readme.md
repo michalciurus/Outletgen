@@ -11,4 +11,4 @@ I'll maybe add it to CocoaPods if y'all are nice enough :)
 
 # Using
 
-Just add a "Restoration ID" to your views and Outletgen will auto generate code for you to use.
+Just add a "Restoration ID" to your views in xibs/storyboards and Outletgen will auto generate code for you to use.
