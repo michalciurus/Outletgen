@@ -1,5 +1,5 @@
 
-Tired of dragging and crashing missing @IBOutlets? Want to be cool like the Androids and have type safe auto generated references? 😎
+Tired of dragging and crashing missing @IBOutlets? Want to get rid of dozens of @IBoutlets cluttering your VCs? Want to be cool like the Androids and have type safe auto generated references? 😎
 Use this script that will automatically generate view outlets for you!
 
 #Installation
