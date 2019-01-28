@@ -57,8 +57,14 @@ func readChildren(xml: XMLIndexer) {
                 if let customModule = child.element!.attribute(by: "customModule")?.text {
                     modules.insert(customModule)
                 }
+            } else {
+                currentViewController = nil
             }
         }
+        
+        if child.element!.attribute(by: "userLabel")?.text == "File's Owner" {
+            currentViewController = child.element!.attribute(by: "customClass")?.text
+        } 
         
         if let restId = child.element?.attribute(by: "restorationIdentifier")?.text {
             
