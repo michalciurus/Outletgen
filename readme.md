@@ -28,8 +28,8 @@ or:
 </details>
 
 
-
-Adding `Outletgen.swift` to `.gitignore` is recommended.
+  
+*Adding `Outletgen.swift` to `.gitignore` is recommended.*
 
 ## Using
 
