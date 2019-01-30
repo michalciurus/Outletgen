@@ -1,7 +1,7 @@
 
-• Tired of dragging and crashing @IBOutlets? 😰
-• Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
-• Want to be cool like the Androids and have type safe auto generated references? 😎
+- Tired of dragging and crashing @IBOutlets? 😰
+- Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
+- Want to be cool like the Androids and have type safe auto generated references? 😎
 
 Use this script that will automatically generate view outlets for you! ⚡️
 
