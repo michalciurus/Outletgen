@@ -5,7 +5,7 @@
 - Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
 - Want to be cool like the Androids and have type safe auto generated references? 😎
 
-Use this script that will automatically generate view outlets for you! ⚡️
+Use this script that will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
 
 **Very early version, feel free to test and contribute**
 
