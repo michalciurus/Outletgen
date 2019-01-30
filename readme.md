@@ -17,6 +17,8 @@ This script will automatically generate view outlets for you! The views are gene
 2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
+---
+
 <details><summary>Manual Installation</summary>
 <p>
 
