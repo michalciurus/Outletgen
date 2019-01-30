@@ -5,23 +5,23 @@
 - Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
 - Want to be cool like the Androids and have type safe auto generated references? 😎
 
-Use this script that will automatically generate view outlets for you! ⚡️
+Use this script that will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
 
-**Very early version, feel free to test and contribute**
+**Very early version, buggy, feel free to test and contribute**
 
 # Installation
 
 ## CocoaPods
 
 1. Add `pod 'Outletgen'` to your Podfile 
-2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode.
-3. Build and add generated `Outletgen.swift` to your project.
+2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
+3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
 ## Manual
 
 1. Drag & Drop `Outletgen` to your project folder.
-2. Add `"$SRCROOT/Outletgen"` to to your Run Scripts in Xcode.
-3. Build and add generated `Outletgen.swift` to your project.
+2. Add `"$SRCROOT/Outletgen"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
+3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
 # Using
 
