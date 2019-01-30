@@ -27,6 +27,7 @@ or:
 </p>
 </details>
 
+Adding `Outletgen.swift` to `.gitignore` is recommended.
 
 ## Using
 
