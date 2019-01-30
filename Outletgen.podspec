@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.name         = "Outletgen"
   s.version      = "0.0.1"
   s.summary      = "@IBOutlet, what is that?"
+  s.author       = { "Michal Ciurus" => "http://michalciur.us/" }
 
 
 
