@@ -13,3 +13,36 @@ I'll maybe add it to CocoaPods if y'all are nice enough :)
 # Using
 
 Just add a "Restoration ID" to your views in xibs/storyboards and Outletgen will auto generate code for you to use.
+
+## Before
+
+```
+class MyVc: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyView: UIScrollView!
+    @IBOutlet weak var searchBar: UISearchBar!
+   
+    override func viewDidLoad() {
+        tableView.isHidden = true
+        activityIndicator.isHidden = true
+        emptyView.isHidden = true
+        searchBar.isHidden = true
+    }
+```
+
+### After
+
+```
+class MyVc: UIViewController {
+    
+    override func viewDidLoad() {
+        // These are auto generated in an extension of MyVc
+        tableView.isHidden = true
+        activityIndicator.isHidden = true
+        emptyView.isHidden = true
+        searchBar.isHidden = true
+    }
+```
+
