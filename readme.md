@@ -19,9 +19,16 @@ This script will automatically generate view outlets for you! The views are gene
 
 ### Manual
 
+<details><summary>Manual Installation</summary>
+<p>
+
 1. Drag & Drop `Outletgen` to your project folder.
 2. Add `"$SRCROOT/Outletgen"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.is
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
+
+</p>
+</details>
+
 
 ## Using
 
