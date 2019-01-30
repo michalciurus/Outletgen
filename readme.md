@@ -53,6 +53,8 @@ No drag & dropping. Just add a "Restoration ID" in your views and references wil
 
 ```
 class MyVc: UIViewController {
+
+    // Aaah, no more clutter!
     
     override func viewDidLoad() {
         // These are auto generated in an extension of MyVc
