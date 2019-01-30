@@ -7,7 +7,7 @@
 
 Use this script that will automatically generate view outlets for you! ⚡️
 
-* Very early version, feel free to test and contribute *
+*Very early version, feel free to test and contribute*
 
 # Installation
 
