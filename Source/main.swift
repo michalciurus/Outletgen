@@ -23,9 +23,24 @@ let folder = try! Folder(path: "")
 let file = try folder.createFile(named: "Outletgen.swift")
 var keysCode: String = ""
 var keysArrayCode: String = ""
+var keysOccurences = [String: Int]()
 var modules: Set<String> = []
-
 var viewControllersExtensionCode: [String : String] = [ : ]
+
+func getRestIdUniqueName(_ restID: String) -> String {
+    var restIdUniqueName = restID
+    
+    if Array(keysOccurences.keys).contains(restIdUniqueName) {
+        var numberOfOccurences = keysOccurences[restIdUniqueName] ?? 0
+        numberOfOccurences += 1
+        keysOccurences[restIdUniqueName] = numberOfOccurences
+        restIdUniqueName = "\(restIdUniqueName)\(numberOfOccurences)"
+    } else {
+        keysOccurences[restIdUniqueName] = 0
+    }
+    
+    return restIdUniqueName
+}
 
 func findXibs(folder: Folder) {
     
@@ -84,15 +99,16 @@ func readChildren(xml: XMLIndexer, destinationExtension: String?) {
             guard let vc = currentDestinationExtension else { return }
             
             var existingCode = viewControllersExtensionCode[vc] ?? ""
+            var restIdUniqueName = getRestIdUniqueName(restId)
             
             existingCode = existingCode + "\n    var \(restId): \(className)! {"
-            existingCode = existingCode + "\n        get { return objc_getAssociatedObject(self, \(restId)Key.address) as? \(className) }"
+            existingCode = existingCode + "\n        get { return objc_getAssociatedObject(self, \(restIdUniqueName)Key.address) as? \(className) }"
             existingCode = existingCode + "\n        set { }"
             existingCode = existingCode + "\n    }"
             
             viewControllersExtensionCode[vc] = existingCode
             
-            keysCode = keysCode + "\nvar \(restId)Key = AssociatedObjectStringKey(key: \"\(restId)\")"
+            keysCode = keysCode + "\nvar \(restIdUniqueName)Key = AssociatedObjectStringKey(key: \"\(restId)\")"
             
             if keysArrayCode != "" {
                 keysArrayCode = keysArrayCode + ", "
