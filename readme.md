@@ -29,7 +29,9 @@ Just add a "Restoration ID" to your views in XIBs/Storyboards and Outletgen will
 
 ## Before
 
-![Drag & Drop](https://i.stack.imgur.com/UBBCs.png)
+<p align="center">
+<img src="https://i.stack.imgur.com/UBBCs.png" height="266" width="513">
+</p>
 
 ```
 class MyVc: UIViewController {
