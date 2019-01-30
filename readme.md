@@ -20,7 +20,7 @@ Use this script that will automatically generate view outlets for you! The views
 ## Manual
 
 1. Drag & Drop `Outletgen` to your project folder.
-2. Add `"$SRCROOT/Outletgen"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
+2. Add `"$SRCROOT/Outletgen"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.is
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
 # Using
@@ -49,7 +49,7 @@ class MyVc: UIViewController {
 
 ## After
 
-No drag & dropping. Just add a "Restoration ID" in your views and this is how you use it in the VC:
+No drag & dropping. Just add a "Restoration ID" in your views and references will be auto-generated for you:
 
 ```
 class MyVc: UIViewController {
