@@ -29,6 +29,8 @@ Just add a "Restoration ID" to your views in xibs/storyboards and Outletgen will
 
 ## Before
 
+![Drag & Drop](https://i.stack.imgur.com/UBBCs.png)
+
 ```
 class MyVc: UIViewController {
     
@@ -46,6 +48,8 @@ class MyVc: UIViewController {
 ```
 
 ### After
+
+No drag & dropping. Just add a "Restoration ID" in your views and this is how you use it in the VC:
 
 ```
 class MyVc: UIViewController {
