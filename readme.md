@@ -7,7 +7,7 @@
 
 Use this script that will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
 
-**Very early version, feel free to test and contribute**
+**Very early version, buggy, feel free to test and contribute**
 
 # Installation
 
