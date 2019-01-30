@@ -47,7 +47,7 @@ class MyVc: UIViewController {
     }
 ```
 
-### After
+## After
 
 No drag & dropping. Just add a "Restoration ID" in your views and this is how you use it in the VC:
 
