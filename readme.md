@@ -25,7 +25,7 @@ Use this script that will automatically generate view outlets for you! The views
 
 # Using
 
-Just add a "Restoration ID" to your views in xibs/storyboards and Outletgen will auto generate code for you to use.
+Just add a "Restoration ID" to your views in XIBs/Storyboards and Outletgen will auto generate code for you to use.
 
 ## Before
 
