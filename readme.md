@@ -4,6 +4,14 @@ Use this script that will automatically generate view outlets for you!
 
 # Installation
 
+## CocoaPods
+
+1. Add pod 'Outletgemn' to your Podfile 
+2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode.
+3. Build and add generated `Outletgen.swift` to your project.
+
+## Manual
+
 1. Drag & Drop `Outletgen` to your project folder.
 2. Add `"$SRCROOT/Outletgen"` to to your Run Scripts in Xcode.
 3. Build and add generated `Outletgen.swift` to your project.
