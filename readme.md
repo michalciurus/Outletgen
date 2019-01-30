@@ -63,3 +63,7 @@ class MyVc: UIViewController {
     }
 ```
 
+
+### Thanks!
+
+@kacper2 <3
