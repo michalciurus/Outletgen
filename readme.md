@@ -64,6 +64,6 @@ class MyVc: UIViewController {
 ```
 
 
-### Thanks!
+### Thanks for contributing!
 
-@kacper2 <3
+[kacperd](https://github.com/kacperd) <3
