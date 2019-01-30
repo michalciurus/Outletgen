@@ -67,6 +67,9 @@ class MyVc: UIViewController {
     }
 ```
 
+# Contributing
+
+Just make a PR! There are some issues to solve in the "Issues" section.
 
 ### Thanks for contributing!
 
