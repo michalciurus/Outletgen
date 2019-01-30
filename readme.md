@@ -1,5 +1,5 @@
 
-#Outletgen Xcode Script
+# Outletgen Xcode Script
 
 - Tired of dragging and crashing @IBOutlets? 😰
 - Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
