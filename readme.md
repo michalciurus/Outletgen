@@ -9,25 +9,25 @@ Use this script that will automatically generate view outlets for you! The views
 
 **Very early version, buggy, feel free to test and contribute**
 
-# Installation
+## Installation
 
-## CocoaPods
+### CocoaPods
 
 1. Add `pod 'Outletgen'` to your Podfile 
 2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
-## Manual
+### Manual
 
 1. Drag & Drop `Outletgen` to your project folder.
 2. Add `"$SRCROOT/Outletgen"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.is
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
-# Using
+## Using
 
 Just add a "Restoration ID" to your views in XIBs/Storyboards and Outletgen will auto generate code for you to use.
 
-## Before
+### Before
 
 <p align="center">
 <img src="https://i.stack.imgur.com/UBBCs.png" height="266" width="513">
@@ -49,7 +49,7 @@ class MyVc: UIViewController {
     }
 ```
 
-## After
+### After
 
 No drag & dropping. Just add a "Restoration ID" in your views and references will be auto-generated for you:
 
@@ -67,7 +67,7 @@ class MyVc: UIViewController {
     }
 ```
 
-# Contributing
+## Contributing
 
 Just make a PR! There are some issues to solve in the "Issues" section.
 
