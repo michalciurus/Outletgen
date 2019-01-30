@@ -1,11 +1,11 @@
 
 # Outletgen Xcode Script
 
-- Tired of dragging and crashing @IBOutlets? 😰
-- Want to get rid of dozens of @IBOutlets cluttering your ViewControllers? 🗑
-- Want to be cool like the Androids and have type safe auto generated references? 😎
+- No more drag & dropping @IBOutlets 🙌
+- No more clutter in ViewControllers 🗑
+- Type safe, no more mystical crashes due to missing @IBOutlets ✨
 
-Use this script that will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
+This script will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
 
 **Very early version, buggy, feel free to test and contribute**
 
