@@ -23,7 +23,6 @@ let folder = try! Folder(path: "")
 let file = try folder.createFile(named: "Outletgen.swift")
 var keysCode: String = ""
 var keysArrayCode: String = ""
-var currentViewController: String? = nil
 var modules: Set<String> = []
 
 var viewControllersExtensionCode: [String : String] = [ : ]
@@ -45,26 +44,33 @@ func parseXib(file: File) {
     let fileString = try! file.readAsString()
     let xml = SWXMLHash.parse(fileString)
     
-    readChildren(xml: xml)
+    readChildren(xml: xml, destinationExtension: nil)
 }
 
-func readChildren(xml: XMLIndexer) {
+func readChildren(xml: XMLIndexer, destinationExtension: String?) {
+    var currentDestinationExtension = destinationExtension
+    
     for child in xml.children {
         
         if child.element!.name.contains("viewController") {
             if let customViewController = child.element!.attribute(by: "customClass")?.text {
-                currentViewController = customViewController
+                currentDestinationExtension = customViewController
                 if let customModule = child.element!.attribute(by: "customModule")?.text {
                     modules.insert(customModule)
                 }
             } else {
-                currentViewController = nil
+                currentDestinationExtension = nil
             }
         }
         
+        
+        if child.element!.name == "tableViewCell" || child.element!.name == "collectionViewCell"  {
+            currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
+        }
+        
         if child.element!.attribute(by: "userLabel")?.text == "File's Owner" {
-            currentViewController = child.element!.attribute(by: "customClass")?.text
-        } 
+            currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
+        }
         
         if let restId = child.element?.attribute(by: "restorationIdentifier")?.text {
             
@@ -75,7 +81,7 @@ func readChildren(xml: XMLIndexer) {
                 modules.insert(child.element!.attribute(by: "customModule")!.text)
             }
             
-            guard let vc = currentViewController else { return }
+            guard let vc = currentDestinationExtension else { return }
             
             var existingCode = viewControllersExtensionCode[vc] ?? ""
             
@@ -95,7 +101,7 @@ func readChildren(xml: XMLIndexer) {
             keysArrayCode = keysArrayCode + "\(restId)Key"
         }
         
-        readChildren(xml: child)
+        readChildren(xml: child, destinationExtension: currentDestinationExtension)
     }
 }
 
