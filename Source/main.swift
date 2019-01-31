@@ -53,18 +53,18 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
             }
         }
         
-        // Reading table view and collection view cells destinations
-        if child.element!.name == "tableViewCell" || child.element!.name == "collectionViewCell"  {
+        // Reading table view and collection view cells and subviews destinations
+        let collectionViewElements = ["tableViewCell", "collectionViewCell", "collectionReusableView"]
+        if collectionViewElements.contains(child.element!.name)  {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
         }
-        
+       
         // Reading the xib owners destinations
         if child.element!.attribute(by: "userLabel")?.text == "File's Owner" {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
         }
         
         if let restId = child.element?.attribute(by: "restorationIdentifier")?.text {
-            
             var className = "UI" + child.element!.name.capitalizingFirstLetter()
             
             if let customClass = child.element!.attribute(by: "customClass") {
