@@ -6,10 +6,12 @@
 
 import Foundation
 
+
 // Modules to import
 var modules: Set<String> = []
 // Code for view controller extensions and their outlet views
-var viewControllersExtensionCode: [String : String] = [ : ]
+typealias ExtensionVars = [String : ExtensionVar]
+var viewControllersExtensionCode: [String : ExtensionVars] = [ : ]
 var allRestorationIDs: Set<String> = []
 
 let homeFolder = try! Folder(path: "")
@@ -53,18 +55,18 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
             }
         }
         
-        // Reading table view and collection view cells destinations
-        if child.element!.name == "tableViewCell" || child.element!.name == "collectionViewCell"  {
+        // Reading table view and collection view cells and subviews destinations
+        let collectionViewElements = ["tableViewCell", "collectionViewCell", "collectionReusableView"]
+        if collectionViewElements.contains(child.element!.name)  {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
         }
-        
+       
         // Reading the xib owners destinations
         if child.element!.attribute(by: "userLabel")?.text == "File's Owner" {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
         }
         
         if let restId = child.element?.attribute(by: "restorationIdentifier")?.text {
-            
             var className = "UI" + child.element!.name.capitalizingFirstLetter()
             
             if let customClass = child.element!.attribute(by: "customClass") {
@@ -74,14 +76,14 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
             
             guard let vc = currentDestinationExtension else { return }
             
-            var existingCode = viewControllersExtensionCode[vc] ?? ""
+            if viewControllersExtensionCode[vc] == nil {
+                viewControllersExtensionCode[vc] = ExtensionVars()
+            }
             
-            existingCode +=  "\n    var \(restId): \(className)! {"
-            existingCode +=  "\n        get { return objc_getAssociatedObject(self, \"\(restId)\".address) as? \(className) }"
-            existingCode +=  "\n        set { }"
-            existingCode +=  "\n    }"
-            
-            viewControllersExtensionCode[vc] = existingCode
+            viewControllersExtensionCode[vc]?[restId] = ExtensionVar(
+                restorationID: restId,
+                className: className
+            )
             
             allRestorationIDs.insert(restId)
         }
@@ -108,7 +110,9 @@ for module in modules {
 for vcKey in viewControllersExtensionCode.keys {
     generatedCode += "\n \n"
     generatedCode += "\nextension \(vcKey) {"
-    generatedCode += viewControllersExtensionCode[vcKey]!
+    for extensionVar in viewControllersExtensionCode[vcKey]!.keys {
+        generatedCode += viewControllersExtensionCode[vcKey]![extensionVar]!.code
+    }
     generatedCode += "\n }"
 }
 
