@@ -12,6 +12,7 @@
 		3F58AD0821FEFE90009030E0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58AD0721FEFE90009030E0 /* main.swift */; };
 		3FD303202201BFE100B40ED7 /* SwizzlingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */; };
 		3FD303222201C0D400B40ED7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD303212201C0D400B40ED7 /* Helpers.swift */; };
+		E708F48922030A42008D15A8 /* ExtensionVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708F48822030A42008D15A8 /* ExtensionVar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		3F58AD0721FEFE90009030E0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwizzlingCode.swift; sourceTree = "<group>"; };
 		3FD303212201C0D400B40ED7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		E708F48822030A42008D15A8 /* ExtensionVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				3F58AD0721FEFE90009030E0 /* main.swift */,
 				3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */,
 				3FD303212201C0D400B40ED7 /* Helpers.swift */,
+				E708F48822030A42008D15A8 /* ExtensionVar.swift */,
 			);
 			name = Outletgen;
 			path = Source;
@@ -135,6 +138,7 @@
 				3F58AD0821FEFE90009030E0 /* main.swift in Sources */,
 				3F45971221FF006B00A60F64 /* SWXMLHash.swift in Sources */,
 				3FD303202201BFE100B40ED7 /* SwizzlingCode.swift in Sources */,
+				E708F48922030A42008D15A8 /* ExtensionVar.swift in Sources */,
 				3FD303222201C0D400B40ED7 /* Helpers.swift in Sources */,
 				3F45971421FF007500A60F64 /* Files.swift in Sources */,
 			);
