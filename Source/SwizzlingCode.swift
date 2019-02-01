@@ -33,6 +33,26 @@ extension SwizzlingInjection {
                 
             }
             
+            
+            if let id = view.outletIdentifier {
+                AllAssociatedObjectsKeys.forEach { (key) in
+                    if key == id {
+                        objc_setAssociatedObject(self, key.address, view, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                    }
+                }
+            }
+            
+            
+            for constraint in view.constraints {
+                if let id = constraint.outletIdentifier {
+                    AllAssociatedObjectsKeys.forEach { (key) in
+                        if key == id {
+                            objc_setAssociatedObject(self, key.address, constraint, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                        }
+                    }
+                }
+            }
+            
             findAllViewsWithRestoration(viewToInpect: view)
         }
     }
@@ -109,6 +129,47 @@ extension UIViewController: SwizzlingInjection
         self.viewLoaded()
         
         findAllViewsWithRestoration(viewToInpect: view)
+    }
+}
+
+
+struct AssociatedKeys {
+    static var outletIdentifier: UInt8 = 0
+}
+
+extension UIView {
+    @IBInspectable var outletIdentifier: String? {
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.outletIdentifier, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            guard let value = objc_getAssociatedObject(self, &AssociatedKeys.outletIdentifier) as? String else { return nil }
+            return value
+        }
+    }
+}
+
+extension NSLayoutConstraint {
+    @IBInspectable var outletIdentifier: String? {
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.outletIdentifier, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            guard let value = objc_getAssociatedObject(self, &AssociatedKeys.outletIdentifier) as? String else { return nil }
+            return value
+        }
+    }
+}
+
+extension UIBarItem {
+    @IBInspectable var outletIdentifier: String? {
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.outletIdentifier, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+        get {
+            guard let value = objc_getAssociatedObject(self, &AssociatedKeys.outletIdentifier) as? String else { return nil }
+            return value
+        }
     }
 }
 

@@ -54,6 +54,17 @@ func saveOutlet(extensionName: String?, outlet: Outlet?) {
     viewControllersExtensionCode[vc]?[outlet.id] = outlet
 }
 
+extension XMLElement {
+    func getOutletID() -> String? {
+        let attributes = self.xmlChildren.filter { $0.name == "userDefinedRuntimeAttributes" }
+        guard let runtimeAttrs = attributes.first else { return nil }
+        let outlets = runtimeAttrs.xmlChildren.filter {
+            return $0.allAttributes["keyPath"]?.text == "outletIdentifier"
+        }
+        return outlets.first?.attribute(by: "value")?.text
+    }
+}
+
 func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
     // This is the Swift extension where the found views will be generated in
     var currentDestinationExtension = destinationExtension
@@ -98,6 +109,29 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
             saveOutlet(extensionName: currentDestinationExtension, outlet: view)
             
             allRestorationIDs.insert(restId)
+        }
+        
+        
+        if let outletID = child.element!.getOutletID() {
+            print ("\(child.element!.name) \(outletID)")
+            var className = "UI" + child.element!.name.capitalizingFirstLetter()
+            if className == "UIConstraint" {
+                className = "NSLayoutConstraint"
+            }
+            
+            if let customClass = child.element!.attribute(by: "customClass") {
+                className = customClass.text
+                modules.insert(child.element!.attribute(by: "customModule")!.text)
+            }
+            
+            let view = UIViewOutlet(
+                restorationID: outletID,
+                className: className
+            )
+            
+            saveOutlet(extensionName: currentDestinationExtension, outlet: view)
+            
+            allRestorationIDs.insert(outletID)
         }
         
         // Reading constraints

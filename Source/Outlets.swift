@@ -8,11 +8,13 @@
 
 import Foundation
 
+
 protocol Outlet {
     var id: String { get }
     var className: String { get set }
     var code: String { get }
 }
+
 
 struct ConstraintOutlet : Outlet {
     var constraintID: String
@@ -34,7 +36,19 @@ struct ConstraintOutlet : Outlet {
         return code
         }
     }
+    
+//    var code : String {
+//        get {
+//            var code = ""
+//            code +=  "\n    var \(id): \(className)! {"
+//            code +=  "\n        get { return objc_getAssociatedObject(self, \"\(id)\".address) as? \(className) }"
+//            code +=  "\n        set { }"
+//            code +=  "\n    }"
+//            return code
+//        }
+//    }
 }
+
 
 struct UIViewOutlet : Outlet  {
     var restorationID: String
