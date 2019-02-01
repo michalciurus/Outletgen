@@ -10,8 +10,8 @@ import Foundation
 // Modules to import
 var modules: Set<String> = []
 // Code for view controller extensions and their outlet views
-typealias ExtensionVars = [String : ExtensionVar]
-var viewControllersExtensionCode: [String : ExtensionVars] = [ : ]
+typealias OutletsDict = [String : Outlet]
+var viewControllersExtensionCode: [String : OutletsDict] = [ : ]
 var allRestorationIDs: Set<String> = []
 
 let homeFolder = try! Folder(path: "")
@@ -37,12 +37,28 @@ func parseXib(file: File) {
     readChildrenRecursivelyIn(xml: xml, destinationExtension: nil)
 }
 
+func parseConstraint(_ element: XMLElement) -> ConstraintOutlet? {
+    guard let identifier = element.attribute(by: "identifier")?.text else { return nil }
+    let constraintClass = element.attribute(by: "customClass")?.text ?? "NSLayoutConstraint"
+    return ConstraintOutlet(constraintID: identifier, className: constraintClass)
+}
+
+func saveOutlet(extensionName: String?, outlet: Outlet?) {
+    guard let vc = extensionName else { return }
+    guard let outlet = outlet else { return }
+    
+    if viewControllersExtensionCode[vc] == nil {
+        viewControllersExtensionCode[vc] = OutletsDict()
+    }
+    
+    viewControllersExtensionCode[vc]?[outlet.id] = outlet
+}
+
 func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
     // This is the Swift extension where the found views will be generated in
     var currentDestinationExtension = destinationExtension
     
     for child in xml.children {
-        
         // Reading ViewControllers destinations
         if child.element!.name.contains("viewController") {
             if let customViewController = child.element!.attribute(by: "customClass")?.text {
@@ -60,7 +76,7 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
         if collectionViewElements.contains(child.element!.name)  {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
         }
-       
+        
         // Reading the xib owners destinations
         if child.element!.attribute(by: "userLabel")?.text == "File's Owner" {
             currentDestinationExtension = child.element!.attribute(by: "customClass")?.text
@@ -74,18 +90,20 @@ func readChildrenRecursivelyIn(xml: XMLIndexer, destinationExtension: String?) {
                 modules.insert(child.element!.attribute(by: "customModule")!.text)
             }
             
-            guard let vc = currentDestinationExtension else { return }
-            
-            if viewControllersExtensionCode[vc] == nil {
-                viewControllersExtensionCode[vc] = ExtensionVars()
-            }
-            
-            viewControllersExtensionCode[vc]?[restId] = ExtensionVar(
+            let view = UIViewOutlet(
                 restorationID: restId,
                 className: className
             )
             
+            saveOutlet(extensionName: currentDestinationExtension, outlet: view)
+            
             allRestorationIDs.insert(restId)
+        }
+        
+        // Reading constraints
+        if child.element!.name == "constraint" {
+            let constraint = parseConstraint(child.element!)
+            saveOutlet(extensionName: currentDestinationExtension, outlet: constraint)
         }
         
         readChildrenRecursivelyIn(xml: child, destinationExtension: currentDestinationExtension)
