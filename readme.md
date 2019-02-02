@@ -13,7 +13,7 @@ Generates references for:
 
 - Storyboard/XIB
 - Subviews
-- Cells
+- Cell storyboard prototype subviews
 - Constraints
 
 ## Installation
