@@ -25,12 +25,6 @@ class InterfaceBuilderParser {
         readChildrenRecursivelyIn(xml: xml, destinationExtension: nil)
     }
     
-    func parseConstraint(_ element: XMLElement) -> ConstraintOutlet? {
-        guard let identifier = element.attribute(by: "identifier")?.text else { return nil }
-        let constraintClass = element.attribute(by: "customClass")?.text ?? "NSLayoutConstraint"
-        return ConstraintOutlet(constraintID: identifier, className: constraintClass)
-    }
-    
     func saveOutlet(extensionName: String?, outlet: Outlet?) {
         guard let vc = extensionName else { return }
         guard let outlet = outlet else { return }
@@ -81,12 +75,6 @@ class InterfaceBuilderParser {
                 saveOutlet(extensionName: currentDestinationExtension, outlet: view)
                 
                 allRestorationIDs.insert(restId)
-            }
-            
-            // Reading constraints
-            if child.element!.name == "constraint" {
-                let constraint = parseConstraint(child.element!)
-                saveOutlet(extensionName: currentDestinationExtension, outlet: constraint)
             }
             
             if let outletID = child.element?.outletID {

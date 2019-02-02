@@ -10,12 +10,12 @@
 		3F45971221FF006B00A60F64 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45971121FF006A00A60F64 /* SWXMLHash.swift */; };
 		3F45971421FF007500A60F64 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F45971321FF007500A60F64 /* Files.swift */; };
 		3F58AD0821FEFE90009030E0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58AD0721FEFE90009030E0 /* main.swift */; };
-		3F6D6CDF2205851D00374EF4 /* Outlets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708F48822030A42008D15A8 /* Outlets.swift */; };
+		3F6D6CDF2205851D00374EF4 /* Outlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708F48822030A42008D15A8 /* Outlet.swift */; };
 		3F6D6CE2220585CD00374EF4 /* InterfaceBuilderParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D6CE1220585CD00374EF4 /* InterfaceBuilderParser.swift */; };
 		3FD303202201BFE100B40ED7 /* SwizzlingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */; };
 		3FD303222201C0D400B40ED7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD303212201C0D400B40ED7 /* Helpers.swift */; };
 		E7EE2D072205F3C3005E3890 /* XMLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EE2D062205F3C3005E3890 /* XMLExtensions.swift */; };
-		E7EE2D0B2205F834005E3890 /* SupportedClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EE2D0A2205F834005E3890 /* SupportedClasses.swift */; };
+		E7EE2D0B2205F834005E3890 /* SupportedClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EE2D0A2205F834005E3890 /* SupportedClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,9 +38,9 @@
 		3F6D6CE1220585CD00374EF4 /* InterfaceBuilderParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceBuilderParser.swift; sourceTree = "<group>"; };
 		3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwizzlingCode.swift; sourceTree = "<group>"; };
 		3FD303212201C0D400B40ED7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		E708F48822030A42008D15A8 /* Outlets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outlets.swift; sourceTree = "<group>"; };
+		E708F48822030A42008D15A8 /* Outlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outlet.swift; sourceTree = "<group>"; };
 		E7EE2D062205F3C3005E3890 /* XMLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLExtensions.swift; sourceTree = "<group>"; };
-		E7EE2D0A2205F834005E3890 /* SupportedClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedClasses.swift; sourceTree = "<group>"; };
+		E7EE2D0A2205F834005E3890 /* SupportedClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportedClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +78,9 @@
 				3F58AD0721FEFE90009030E0 /* main.swift */,
 				3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */,
 				3FD303212201C0D400B40ED7 /* Helpers.swift */,
-				E708F48822030A42008D15A8 /* Outlets.swift */,
+				E708F48822030A42008D15A8 /* Outlet.swift */,
 				3F6D6CE1220585CD00374EF4 /* InterfaceBuilderParser.swift */,
-				E7EE2D0A2205F834005E3890 /* SupportedClasses.swift */,
+				E7EE2D0A2205F834005E3890 /* SupportedClass.swift */,
 			);
 			name = Outletgen;
 			path = Source;
@@ -160,14 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6D6CDF2205851D00374EF4 /* Outlets.swift in Sources */,
+				3F6D6CDF2205851D00374EF4 /* Outlet.swift in Sources */,
 				3F58AD0821FEFE90009030E0 /* main.swift in Sources */,
 				3F6D6CE2220585CD00374EF4 /* InterfaceBuilderParser.swift in Sources */,
 				3F45971221FF006B00A60F64 /* SWXMLHash.swift in Sources */,
 				3FD303202201BFE100B40ED7 /* SwizzlingCode.swift in Sources */,
 				3FD303222201C0D400B40ED7 /* Helpers.swift in Sources */,
 				3F45971421FF007500A60F64 /* Files.swift in Sources */,
-				E7EE2D0B2205F834005E3890 /* SupportedClasses.swift in Sources */,
+				E7EE2D0B2205F834005E3890 /* SupportedClass.swift in Sources */,
 				E7EE2D072205F3C3005E3890 /* XMLExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

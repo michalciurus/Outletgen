@@ -34,6 +34,7 @@ struct SupportedClass {
         get {
             return
 """
+            
 extension \(name) {
     @IBInspectable var outletIdentifier: String? {
         set {
@@ -45,6 +46,7 @@ extension \(name) {
         }
     }
 }
+            
 """
         }
     }

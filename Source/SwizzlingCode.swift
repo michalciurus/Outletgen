@@ -42,6 +42,12 @@ extension SwizzlingInjection {
                 }
             }
             
+            // for UIBarItems
+            if view.isKind(of: UIToolbar.self) {
+                if let toolbar = view as? UIToolbar {
+                    findUIBarItems(items: toolbar.items)
+                }
+            }
             
             for constraint in view.constraints {
                 if let id = constraint.outletIdentifier {
@@ -54,6 +60,19 @@ extension SwizzlingInjection {
             }
             
             findAllViewsWithRestoration(viewToInpect: view)
+        }
+    }
+    
+    public func findUIBarItems(items: [UIBarItem]?) {
+        guard let items = items else { return }
+        for item in items {
+            if let id = item.outletIdentifier {
+                AllAssociatedObjectsKeys.forEach { (key) in
+                    if key == id {
+                        objc_setAssociatedObject(self, key.address, item, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                    }
+                }
+            }
         }
     }
 }
@@ -129,6 +148,8 @@ extension UIViewController: SwizzlingInjection
         self.viewLoaded()
         
         findAllViewsWithRestoration(viewToInpect: view)
+        findUIBarItems(items: navigationItem.leftBarButtonItems)
+        findUIBarItems(items: navigationItem.rightBarButtonItems)
     }
 }
 
