@@ -9,6 +9,12 @@ This script will automatically generate view outlets for you! The views are gene
 
 **Very early version, buggy, feel free to test and contribute**
 
+Generates references for:
+
+- Subviews
+- Cells
+- Constraints
+
 ## Installation
 
 1. Add `pod 'Outletgen'` to your Podfile 
