@@ -11,6 +11,7 @@ This script will automatically generate view outlets for you! The views are gene
 
 Generates references for:
 
+- Storyboard/XIB
 - Subviews
 - Cells
 - Constraints
