@@ -3,7 +3,6 @@
 //  Outletgen
 //
 //  Created by Kacper Dziubek on 31/01/2019.
-//  Copyright © 2019 SPAR. All rights reserved.
 //
 
 import Foundation
