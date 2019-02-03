@@ -38,7 +38,7 @@ or:
 
 ## Using
 
-Just add a "Restoration ID" to your views in XIBs/Storyboards and Outletgen will auto generate code for you to use.
+Just add an "Outlet identifier" to your views in XIBs/Storyboards and Outletgen will auto generate code for you to use.
 
 ### Before
 
@@ -64,7 +64,7 @@ class MyVc: UIViewController {
 
 ### After
 
-No drag & dropping. Just add a "Restoration ID" in your views and references will be auto-generated for you:
+No drag & dropping. Just add an "Outlet identifier" in your views and references will be auto-generated for you:
 
 ```
 class MyVc: UIViewController {
