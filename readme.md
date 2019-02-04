@@ -7,7 +7,6 @@
 
 This script will automatically generate view outlets for you! The views are generated as VC extensions and are stored by object association ⚡️
 
-**Very early version, buggy, feel free to test and contribute**
 
 Features:
 
@@ -16,6 +15,8 @@ Features:
 - Outlets for subviews in cells storyboard prototypes
 - Outlets for constraints
 - Outlets for UIBarButtonItems
+
+**Early version, may be buggy, feel free to test and contribute**
 
 ## Installation
 
