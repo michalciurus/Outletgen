@@ -39,7 +39,7 @@ or:
 
 ## Using
 
-Just add an "Outlet identifier" to your views in XIBs/Storyboards and Outletgen will auto generate code for you to use.
+Just add an "Outlet identifier" (`outletIdentifier`) to your views, constraints in XIBs/Storyboards and Outletgen will auto generate code for you to use.
 
 ### Before
 
