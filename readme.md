@@ -9,12 +9,13 @@ This script will automatically generate view outlets for you! The views are gene
 
 **Very early version, buggy, feel free to test and contribute**
 
-Generates references for:
+Features:
 
-- Storyboard/XIB
-- Subviews
-- Cell storyboard prototype subviews
-- Constraints
+- Storyboard/XIB support
+- Outlets for subviews
+- Outlets for subviews in cells storyboard prototypes
+- Outlets for constraints
+- Outlets for UIBarButtonItems
 
 ## Installation
 
