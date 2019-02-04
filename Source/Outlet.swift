@@ -7,32 +7,11 @@
 
 import Foundation
 
+
 protocol Outlet {
     var id: String { get }
     var className: String { get set }
     var code: String { get }
-}
-
-struct ConstraintOutlet : Outlet {
-    var constraintID: String
-    var className: String
-    
-    var id: String {
-        get {
-            return constraintID
-        }
-    }
-    
-    var code: String {
-        get {
-        var code = ""
-        code +=  "\n    var \(id): \(className)! {"
-        code +=  "\n        get { return self.view.constraints.first { $0.identifier == \"\(constraintID)\"} as? \(className)  }"
-        code +=  "\n        set { }"
-        code +=  "\n    }"
-        return code
-        }
-    }
 }
 
 struct UIViewOutlet : Outlet  {

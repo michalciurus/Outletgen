@@ -28,6 +28,7 @@ let parser = InterfaceBuilderParser()
 
 parseRecursivelyFilesIn(folder: homeFolder, with: parser )
 
+
 //MARK: GENERATING CODE
 
 var generatedCode = ""
@@ -78,5 +79,10 @@ generatedCode += "]"
 
 generatedCode += "\n\n//Swizzling Code \n\n"
 generatedCode += logicCode
+
+// MARK: ADDING THE CODE FOR INTERFACE BUILDER FIELDS
+
+generatedCode += "\n\n"
+generatedCode += getSupportedClassesCode()
 
 try! file.append(string: generatedCode)

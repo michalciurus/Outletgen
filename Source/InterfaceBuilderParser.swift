@@ -17,17 +17,12 @@ class InterfaceBuilderParser {
     var viewControllersExtensionCode: [String : OutletsDict] = [ : ]
     var allRestorationIDs: Set<String> = []
     
+    
     func parseXib(file: File) {
         let fileString = try! file.readAsString()
         let xml = SWXMLHash.parse(fileString)
         
         readChildrenRecursivelyIn(xml: xml, destinationExtension: nil)
-    }
-    
-    func parseConstraint(_ element: XMLElement) -> ConstraintOutlet? {
-        guard let identifier = element.attribute(by: "identifier")?.text else { return nil }
-        let constraintClass = element.attribute(by: "customClass")?.text ?? "NSLayoutConstraint"
-        return ConstraintOutlet(constraintID: identifier, className: constraintClass)
     }
     
     func saveOutlet(extensionName: String?, outlet: Outlet?) {
@@ -70,12 +65,7 @@ class InterfaceBuilderParser {
             }
             
             if let restId = child.element?.attribute(by: "restorationIdentifier")?.text {
-                var className = "UI" + child.element!.name.capitalizingFirstLetter()
-                
-                if let customClass = child.element!.attribute(by: "customClass") {
-                    className = customClass.text
-                    modules.insert(child.element!.attribute(by: "customModule")!.text)
-                }
+                let className = getClassName(child.element!)
                 
                 let view = UIViewOutlet(
                     restorationID: restId,
@@ -87,14 +77,46 @@ class InterfaceBuilderParser {
                 allRestorationIDs.insert(restId)
             }
             
-            // Reading constraints
-            if child.element!.name == "constraint" {
-                let constraint = parseConstraint(child.element!)
-                saveOutlet(extensionName: currentDestinationExtension, outlet: constraint)
+            if let outletID = child.element?.outletID {
+                print ("\(child.element!.name) \(outletID)")
+                let className = getClassName(child.element!)
+                
+                let view = UIViewOutlet(
+                    restorationID: outletID,
+                    className: className
+                )
+                
+                saveOutlet(extensionName: currentDestinationExtension, outlet: view)
+                
+                allRestorationIDs.insert(outletID)
             }
             
             readChildrenRecursivelyIn(xml: child, destinationExtension: currentDestinationExtension)
         }
+    }
+    
+    private func getClassName(_ element: XMLElement) -> String {
+        // check if element has custom class
+        if let customClass = element.attribute(by: "customClass") {
+            modules.insert(element.attribute(by: "customModule")!.text)
+            return customClass.text
+        }
+        
+        return getUIKitClassName(element)
+    }
+    
+    private func getUIKitClassName(_ element: XMLElement) -> String {
+        // Map containig classes names used when class name defined in xml
+        // does not match UIKit clas name by just appending UI prefix
+        let classesMap = [
+            "constraint" : "NSLayoutConstraint",
+            "containerView": "containerView"
+        ]
+        
+        let className = element.name
+        
+        return classesMap[className] ?? "UI" + className.capitalizingFirstLetter()
+        
     }
 
 }
