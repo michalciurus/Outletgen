@@ -110,7 +110,7 @@ class InterfaceBuilderParser {
         // does not match UIKit clas name by just appending UI prefix
         let classesMap = [
             "constraint" : "NSLayoutConstraint",
-            "containerView": "containerView"
+            "containerView": "UIView"
         ]
         
         let className = element.name
