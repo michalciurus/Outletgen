@@ -17,49 +17,48 @@ extension String {
 public protocol SwizzlingInjection: class {
     static func inject()
     
-    func findAllViewsWithRestoration(viewToInpect: UIView)
+    func findAllViewsWithOutlets(view: UIView)
 }
 
 extension SwizzlingInjection {
-    public func findAllViewsWithRestoration(viewToInpect: UIView) {
-        for view in viewToInpect.subviews {
-            if view.restorationIdentifier != nil {
-                
-                AllAssociatedObjectsKeys.forEach { (key) in
-                    if key == view.restorationIdentifier {
-                        objc_setAssociatedObject(self, key.address, view, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                    }
+    public func findAllViewsWithOutlets(view: UIView) {
+
+        if view.restorationIdentifier != nil {
+            AllAssociatedObjectsKeys.forEach { (key) in
+                if key == view.restorationIdentifier {
+                    objc_setAssociatedObject(self, key.address, view, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 }
-                
             }
-            
-            
-            if let id = view.outletIdentifier {
+
+        }
+
+
+        if let id = view.outletIdentifier {
+            AllAssociatedObjectsKeys.forEach { (key) in
+                if key == id {
+                    objc_setAssociatedObject(self, key.address, view, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                }
+            }
+        }
+
+        // for UIBarItems
+        if view.isKind(of: UIToolbar.self) {
+            if let toolbar = view as? UIToolbar {
+                findUIBarItems(items: toolbar.items)
+            }
+        }
+
+        for constraint in view.constraints {
+            if let id = constraint.outletIdentifier {
                 AllAssociatedObjectsKeys.forEach { (key) in
                     if key == id {
-                        objc_setAssociatedObject(self, key.address, view, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                        objc_setAssociatedObject(self, key.address, constraint, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                     }
                 }
             }
-            
-            // for UIBarItems
-            if view.isKind(of: UIToolbar.self) {
-                if let toolbar = view as? UIToolbar {
-                    findUIBarItems(items: toolbar.items)
-                }
-            }
-            
-            for constraint in view.constraints {
-                if let id = constraint.outletIdentifier {
-                    AllAssociatedObjectsKeys.forEach { (key) in
-                        if key == id {
-                            objc_setAssociatedObject(self, key.address, constraint, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                        }
-                    }
-                }
-            }
-            
-            findAllViewsWithRestoration(viewToInpect: view)
+        }
+        for subview in view.subviews {
+            findAllViewsWithOutlets(view: subview)
         }
     }
     
@@ -119,13 +118,11 @@ extension UIView: SwizzlingInjection {
     
     @objc func viewAwoken() {
         self.viewAwoken()
-        
-        findAllViewsWithRestoration(viewToInpect: self)
+        findAllViewsWithOutlets(view: self)
     }
 }
 
-extension UIViewController: SwizzlingInjection
-{
+extension UIViewController: SwizzlingInjection {
     
     public static func inject() {
         let originalSelector = #selector(UIViewController.loadView)
@@ -141,13 +138,12 @@ extension UIViewController: SwizzlingInjection
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
-        
     }
     
     @objc func viewLoaded() {
         self.viewLoaded()
         
-        findAllViewsWithRestoration(viewToInpect: view)
+        findAllViewsWithOutlets(view: view)
         findUIBarItems(items: navigationItem.leftBarButtonItems)
         findUIBarItems(items: navigationItem.rightBarButtonItems)
     }

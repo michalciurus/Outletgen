@@ -15,18 +15,20 @@
 		3FD303202201BFE100B40ED7 /* SwizzlingCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD3031F2201BFE100B40ED7 /* SwizzlingCode.swift */; };
 		3FD303222201C0D400B40ED7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD303212201C0D400B40ED7 /* Helpers.swift */; };
 		E7EE2D072205F3C3005E3890 /* XMLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EE2D062205F3C3005E3890 /* XMLExtensions.swift */; };
+		E7EE2D092205F5E6005E3890 /* Outletgen in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F58AD0421FEFE90009030E0 /* Outletgen */; };
 		E7EE2D0B2205F834005E3890 /* SupportedClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EE2D0A2205F834005E3890 /* SupportedClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3F58AD0221FEFE90009030E0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "/Users/kacper/workspace/one_second_videos/One Second Videos";
 			dstSubfolderSpec = 0;
 			files = (
+				E7EE2D092205F5E6005E3890 /* Outletgen in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
