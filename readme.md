@@ -19,7 +19,7 @@ Generates references for:
 ## Installation
 
 1. Add `pod 'Outletgen'` to your Podfile 
-2. Add `"$PODS_ROOT/Outletgen/Outletgen"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
+2. Add `"$PODS_ROOT/Outletgen/Outletgen --module $PRODUCT_MODULE_NAME"` to to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
 *Adding `Outletgen.swift` to `.gitignore` is recommended.*
@@ -30,7 +30,7 @@ or:
 <p>
 
 1. Drag & Drop `Outletgen` to your project folder.
-2. Add `"$SRCROOT/Outletgen"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.is
+2. Add `"$SRCROOT/Outletgen --module $PRODUCT_MODULE_NAME"` to your Run Scripts in Xcode. **Drag it above the Compile Sources phase**.is
 3. Build and add generated `Outletgen.swift` to your project. Deselect *Copy files if needed*.
 
 </p>
