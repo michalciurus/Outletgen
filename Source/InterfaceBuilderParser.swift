@@ -78,7 +78,6 @@ class InterfaceBuilderParser {
             }
             
             if let outletID = child.element?.outletID {
-                print ("\(child.element!.name) \(outletID)")
                 let className = getClassName(child.element!)
                 
                 let view = UIViewOutlet(
