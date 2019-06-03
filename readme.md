@@ -1,4 +1,6 @@
 
+Abandoned because: SwiftUI
+
 # Outletgen Xcode Script
 
 - No more drag & dropping @IBOutlets 🙌
